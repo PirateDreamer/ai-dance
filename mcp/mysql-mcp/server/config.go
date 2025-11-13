@@ -8,7 +8,7 @@ import (
 )
 
 func LoadConfig() (err error) {
-	viper.SetConfigFile("D:/workspace/mcp-project/mcp-mysql/server/config.yaml")
+	viper.SetConfigFile("E:/Workspace/me/ai-dance/mcp/mysql-mcp/server/config.yaml")
 
 	if err = viper.ReadInConfig(); err != nil {
 		return
