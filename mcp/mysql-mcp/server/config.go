@@ -2,13 +2,25 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
 func LoadConfig() (err error) {
-	viper.SetConfigFile("E:/Workspace/me/ai-dance/mcp/mysql-mcp/server/config.yaml")
+	// 获取当前的工作目录
+	executable, err := os.Executable()
+	if err != nil {
+		fmt.Println("Error getting executable path:", err)
+		return
+	}
+
+	// 获取该路径的所在目录
+	dir := filepath.Dir(executable)
+
+	viper.SetConfigFile(filepath.Join(dir, "config.yaml"))
 
 	if err = viper.ReadInConfig(); err != nil {
 		return
